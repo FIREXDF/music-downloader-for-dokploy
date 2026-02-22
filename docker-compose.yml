@@ -19,6 +19,13 @@ services:
       # Uncomment and set path to your cookies file:
       # - /path/to/youtube_cookies.txt:/app/youtube_cookies.txt:ro
     environment:
+      - NAVIDROME_API_URL=${NAVIDROME_API_URL}
+      - NAVIDROME_USERNAME=${NAVIDROME_USERNAME}
+      - NAVIDROME_PASSWORD=${NAVIDROME_PASSWORD}
+
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - SPOTIFY_REDIRECT_URI=${SPOTIFY_REDIRECT_URI}
       - API_HOST=0.0.0.0
       - API_PORT=8000
       - NAVIDROME_MUSIC_PATH=/music/Users/FIREXDF
