@@ -28,7 +28,7 @@ services:
       - SPOTIFY_REDIRECT_URI=${SPOTIFY_REDIRECT_URI}
       - API_HOST=0.0.0.0
       - API_PORT=8000
-      - NAVIDROME_MUSIC_PATH=/music/Users/FIREXDF
+      - NAVIDROME_MUSIC_PATH=${NAVIDROME_MUSIC_PATH}
       # If Navidrome is running in another container, use service name
       # If running on host, use host.docker.internal (or 172.17.0.1 on Linux)
       - NAVIDROME_API_URL=${NAVIDROME_API_URL:-http://host.docker.internal:4533}
