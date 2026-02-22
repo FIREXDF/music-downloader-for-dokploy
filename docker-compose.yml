@@ -12,7 +12,7 @@ services:
     volumes:
       # Mount Navidrome music directory (REQUIRED: Change to your actual Navidrome music path)
       # Example: - /path/to/navidrome/music:/music:rw
-      - /mnt/qnap/music:/music/Users/FIREXDF:rw
+      - /mnt/qnap/music:/music:rw
       # Mount downloads directory for temp files (optional, for persistence)
       - ./downloads:/app/downloads:rw
       # Mount YouTube cookies file (optional, for bypassing bot detection)
