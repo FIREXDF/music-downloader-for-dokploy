@@ -156,14 +156,14 @@ def download_and_process(track_id: str, location: str = "local", video_id: str =
             temp_dir = os.path.join(config.DOWNLOAD_DIR, "temp")
             Path(temp_dir).mkdir(parents=True, exist_ok=True)
             download_path = get_download_path(track_info, temp_dir, output_format)
-            print(f"Downloading track {track_id} for Navidrome: {download_path}")
+            print(f"[DownloadAndProcess] Telechargement de la piste {track_id} temporairement vers : {download_path}")
         else:
             # For local downloads: download to temp folder, then serve via browser download
             # This allows each user's browser to save to their own Downloads folder
             temp_dir = os.path.join(config.DOWNLOAD_DIR, "temp")
             Path(temp_dir).mkdir(parents=True, exist_ok=True)
             download_path = get_download_path(track_info, temp_dir, output_format)
-            print(f"Downloading track {track_id} for local browser download: {download_path}")
+            print(f"[DownloadAndProcess] Telechargement de la piste {track_id} pour le navigateur local : {download_path}")
 
         upsert_job(track_id,
                    status="processing",
@@ -216,6 +216,7 @@ def download_and_process(track_id: str, location: str = "local", video_id: str =
 
                 # Copy file to Navidrome directory
                 shutil.copy2(download_result['file_path'], target_path)
+                print(f"[DownloadAndProcess] Fichier deplace vers sa destination finale (NAS/Navidrome) : {target_path}")
 
                 # Clean up temp file
                 if os.path.exists(download_result['file_path']):
@@ -500,6 +501,7 @@ def reverse_download_and_process(job_id: str, youtube_url: str, location: str, s
             try:
                 target_path = navidrome_service.get_target_path(track_info, config.OUTPUT_FORMAT)
                 shutil.copy2(download_result['file_path'], target_path)
+                print(f"[ReverseDownload] Fichier deplace vers sa destination finale (NAS/Navidrome) : {target_path}")
                 if os.path.exists(download_result['file_path']):
                     os.remove(download_result['file_path'])
 
